@@ -1,0 +1,273 @@
+<mxfile host="app.diagrams.net" modified="2025-12-10T00:00:00.000Z" agent="Claude" version="22.0.0">
+  <diagram name="Data Flow" id="data-flow">
+    <mxGraphModel dx="1422" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 제목 -->
+        <mxCell id="title" value="데이터 플로우 다이어그램 (상세)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=26;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="500" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Start -->
+        <mxCell id="start" value="시작" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4caf50;strokeColor=#2e7d32;fontSize=14;fontColor=#ffffff;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="630" y="80" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- API Decision -->
+        <mxCell id="api-decision" value="API 데이터&#xa;존재?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#fff59d;strokeColor=#f57f17;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="620" y="180" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- No - Sample Data -->
+        <mxCell id="sample-data" value="샘플 데이터 사용&#xa;data/raw/&#xa;*_sample.csv" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5fe;strokeColor=#01579b;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Yes - API Fetch -->
+        <mxCell id="api-fetch" value="API 호출&#xa;fetch_seoul_data.py" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#bbdefb;strokeColor=#1976d2;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="840" y="320" width="180" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Raw Data 1 -->
+        <mxCell id="raw1" value="CCTV 원본 데이터&#xa;25개 자치구&#xa;4개 유형" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#c5e1a5;strokeColor=#558b2f;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="220" y="460" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Raw Data 2 -->
+        <mxCell id="raw2" value="범죄 원본 데이터&#xa;5개 범죄 유형&#xa;자치구별 건수" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ffccbc;strokeColor=#d84315;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="620" y="460" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Raw Data 3 -->
+        <mxCell id="raw3" value="인구 원본 데이터&#xa;인구수, 면적&#xa;인구밀도" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d1c4e9;strokeColor=#4527a0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="460" width="160" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Clean 1 -->
+        <mxCell id="clean1" value="CCTV 데이터 정제&#xa;• 자치구명 표준화&#xa;• 유형별 집계&#xa;• 결측치 처리" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="210" y="620" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Clean 2 -->
+        <mxCell id="clean2" value="범죄 데이터 정제&#xa;• 자치구명 표준화&#xa;• CCTV효과범죄 선별&#xa;• 이상치 제거" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffab91;strokeColor=#d84315;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="610" y="620" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Clean 3 -->
+        <mxCell id="clean3" value="인구 데이터 정제&#xa;• 자치구명 표준화&#xa;• 인구밀도 계산&#xa;• 데이터 검증" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4527a0;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="620" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Merge -->
+        <mxCell id="merge" value="데이터 통합&#xa;자치구 기준 JOIN&#xa;(left join on 자치구)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="580" y="770" width="240" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- Derive -->
+        <mxCell id="derive" value="파생 변수 생성&#xa;• 인구당_총CCTV = 총CCTV / 인구수 × 1000&#xa;• 인구당_방범용 = 방범용 / 인구수 × 1000&#xa;• 인구당_범죄율 = 범죄합계 / 인구수 × 100&#xa;• 방범용_비율 = 방범용 / 총CCTV × 100&#xa;• 범죄_비율 = 각범죄 / 총범죄 × 100" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#81d4fa;strokeColor=#01579b;fontSize=11;align=left;spacingLeft=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="530" y="910" width="340" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- Classify -->
+        <mxCell id="classify" value="4사분면 분류&#xa;• CCTV밀도 등급 (중앙값 기준)&#xa;  - 상(75%~), 중상(50~75%), 중하(25~50%), 하(~25%)&#xa;• 범죄율 등급 (중앙값 기준)&#xa;  - 상(75%~), 중상(50~75%), 중하(25~50%), 하(~25%)&#xa;• 분면 할당&#xa;  Q1: 고CCTV/고범죄, Q2: 저CCTV/고범죄&#xa;  Q3: 저CCTV/저범죄, Q4: 고CCTV/저범죄" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#64b5f6;strokeColor=#0d47a1;fontSize=11;align=left;spacingLeft=10;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="1090" width="440" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Processed Data -->
+        <mxCell id="processed" value="통합 데이터&#xa;integrated_data_with_quadrant.csv&#xa;&#xa;25개 자치구 × 40+ 컬럼" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#ff8a65;strokeColor=#d32f2f;fontSize=13;fontStyle=1;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1300" width="220" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Analysis Branches -->
+        <mxCell id="analysis1" value="탐색적 데이터 분석&#xa;• 기초 통계량&#xa;• 상관분석&#xa;• 분포 확인" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c5e1a5;strokeColor=#558b2f;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="100" y="1480" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="analysis2" value="회귀 분석&#xa;• OLS 모델&#xa;• 가정 검증&#xa;• 계수 해석" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#90caf9;strokeColor=#0d47a1;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="330" y="1480" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="analysis3" value="고급 시각화&#xa;• 히트맵&#xa;• 산점도&#xa;• 상관관계 매트릭스" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ce93d8;strokeColor=#4527a0;fontSize=11;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="560" y="1480" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dashboard" value="인터랙티브 대시보드&#xa;dashboard.py&#xa;Streamlit App" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ff4b4b;strokeColor=#c62828;fontSize=12;fontColor=#ffffff;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="790" y="1480" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="report" value="최종 리포트&#xa;FINAL_REPORT.md" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#fff59d;strokeColor=#f57f17;fontSize=12;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1020" y="1480" width="180" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- Deploy -->
+        <mxCell id="deploy" value="배포&#xa;GitHub + Streamlit Cloud" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffd54f;strokeColor=#f57f17;fontSize=13;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="580" y="1640" width="240" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- End -->
+        <mxCell id="end" value="공개 URL 생성" style="ellipse;whiteSpace=wrap;html=1;fillColor=#4caf50;strokeColor=#2e7d32;fontSize=14;fontColor=#ffffff;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="630" y="1750" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows -->
+        <mxCell id="arrow-start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="start" target="api-decision">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="api-decision" target="sample-data">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-no" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#c62828;" vertex="1" parent="1">
+          <mxGeometry x="550" y="220" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="api-decision" target="api-fetch">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-yes" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="800" y="220" width="40" height="20" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-sample-raw1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="sample-data" target="raw1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-api-raw1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="api-fetch" target="raw1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="440" />
+              <mxPoint x="300" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-api-raw2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="api-fetch" target="raw2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-api-raw3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=2;" edge="1" parent="1" source="api-fetch" target="raw3">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="440" />
+              <mxPoint x="1100" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-raw1-clean1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#2e7d32;" edge="1" parent="1" source="raw1" target="clean1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-raw2-clean2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#d84315;" edge="1" parent="1" source="raw2" target="clean2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-raw3-clean3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#4527a0;" edge="1" parent="1" source="raw3" target="clean3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-clean1-merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#0d47a1;" edge="1" parent="1" source="clean1" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-clean2-merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#0d47a1;" edge="1" parent="1" source="clean2" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-clean3-merge" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#0d47a1;" edge="1" parent="1" source="clean3" target="merge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-merge-derive" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#01579b;" edge="1" parent="1" source="merge" target="derive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-derive-classify" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#01579b;" edge="1" parent="1" source="derive" target="classify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-classify-processed" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;strokeWidth=3;strokeColor=#d32f2f;" edge="1" parent="1" source="classify" target="processed">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-processed-analysis1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#558b2f;" edge="1" parent="1" source="processed" target="analysis1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="1440" />
+              <mxPoint x="190" y="1440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-processed-analysis2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#0d47a1;" edge="1" parent="1" source="processed" target="analysis2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="1440" />
+              <mxPoint x="420" y="1440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-processed-analysis3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;strokeColor=#4527a0;" edge="1" parent="1" source="processed" target="analysis3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-processed-dashboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#c62828;" edge="1" parent="1" source="processed" target="dashboard">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="1440" />
+              <mxPoint x="880" y="1440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-analysis1-report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="analysis1" target="report">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="1600" />
+              <mxPoint x="1000" y="1600" />
+              <mxPoint x="1000" y="1525" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-analysis2-report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="analysis2" target="report">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="1600" />
+              <mxPoint x="1065" y="1600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-analysis3-report" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="analysis3" target="report">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="650" y="1600" />
+              <mxPoint x="1110" y="1600" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-dashboard-deploy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#f57f17;" edge="1" parent="1" source="dashboard" target="deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-report-deploy" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#f57f17;" edge="1" parent="1" source="report" target="deploy">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1110" y="1670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow-deploy-end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;strokeColor=#2e7d32;" edge="1" parent="1" source="deploy" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -18,6 +18,10 @@ plotly>=5.18.0
 # 대시보드
 streamlit>=1.29.0
 
+# 다이어그램 생성 (선택사항)
+# diagrams>=0.23.0
+# graphviz
+
 # Jupyter (선택사항 - 대화형 분석용)
 # jupyter>=1.0.0
 # notebook>=7.0.0

@@ -26,6 +26,36 @@
 - **동적 시각화**: Plotly 기반 인터랙티브 차트 및 상관관계 분석
 - **정책 제안**: 4사분면 분류 기반 실질적 정책 인사이트
 
+## 📐 시스템 아키텍처
+
+프로젝트의 전체 구조와 데이터 흐름을 시각화한 다이어그램을 제공합니다.
+
+### 다이어그램 파일
+- **[system_architecture.drawio](./system_architecture.drawio)** - 전체 시스템 아키텍처 (6개 Layer 구조)
+- **[data_pipeline.drawio](./data_pipeline.drawio)** - ETL 데이터 파이프라인
+- **[data_flow.drawio](./data_flow.drawio)** - 상세 데이터 플로우 (의사결정 포함)
+- **[DIAGRAMS.md](./DIAGRAMS.md)** - Mermaid 다이어그램 (GitHub에서 바로 확인)
+
+> 💡 **Tip**: `.drawio` 파일은 [draw.io](https://app.diagrams.net/)에서 열어서 편집할 수 있습니다!
+
+### 시스템 구조 개요
+
+```
+데이터 소스 (API, 공공데이터)
+    ↓
+데이터 수집 (fetch_seoul_data.py)
+    ↓
+데이터 처리 (정제 → 통합 → 파생변수)
+    ↓
+분석 (EDA, 회귀, 시각화, 분류)
+    ↓
+시각화 (대시보드 + 리포트)
+    ↓
+배포 (GitHub → Streamlit Cloud)
+```
+
+자세한 내용은 [DIAGRAMS.md](./DIAGRAMS.md)를 참고하세요.
+
 ## 폴더 구조
 
 ```
