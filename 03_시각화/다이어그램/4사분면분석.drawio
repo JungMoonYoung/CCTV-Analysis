@@ -1,0 +1,73 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36" version="29.2.6">
+  <diagram name="Quadrant Algorithm" id="cxaBRbnHnt6Xqk24-i4K">
+    <mxGraphModel dx="1720" dy="1024" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ikmZc0af65C3sIocB3es-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="통합 데이터 입력" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="중앙값 계산" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="등급 분류" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="4사분면 할당" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;fontSize=25;fontStyle=0" value="" vertex="1">
+          <mxGeometry height="140" width="600" x="100" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="1사분면" vertex="1">
+          <mxGeometry height="100" width="120" x="120" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="2사분면" vertex="1">
+          <mxGeometry height="100" width="120" x="260" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="3사분면" vertex="1">
+          <mxGeometry height="100" width="120" x="400" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="4사분면" vertex="1">
+          <mxGeometry height="100" width="120" x="540" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="분류 결과 출력" vertex="1">
+          <mxGeometry height="60" width="200" x="300" y="780" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0" target="ikmZc0af65C3sIocB3es-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="139.9999999999999" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-15" edge="1" parent="1" source="ikmZc0af65C3sIocB3es-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0" target="ikmZc0af65C3sIocB3es-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-16" edge="1" parent="1" source="ikmZc0af65C3sIocB3es-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0" target="ikmZc0af65C3sIocB3es-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-17" edge="1" parent="1" source="ikmZc0af65C3sIocB3es-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0" target="ikmZc0af65C3sIocB3es-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-18" edge="1" parent="1" source="ikmZc0af65C3sIocB3es-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0" target="ikmZc0af65C3sIocB3es-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="600" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-19" edge="1" parent="1" source="ikmZc0af65C3sIocB3es-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0" target="ikmZc0af65C3sIocB3es-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-20" edge="1" parent="1" source="ikmZc0af65C3sIocB3es-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=3;fontSize=25;fontStyle=0">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="880" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="&lt;font&gt;시작&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ikmZc0af65C3sIocB3es-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontSize=25;fontStyle=0" value="&lt;font&gt;종료&lt;/font&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="880" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

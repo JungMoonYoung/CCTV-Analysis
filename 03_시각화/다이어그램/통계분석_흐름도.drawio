@@ -1,0 +1,294 @@
+<mxfile host="app.diagrams.net" modified="2025-12-11T00:00:00.000Z" agent="5.0" version="24.0.0" etag="drawio" type="device">
+  <diagram name="통계분석흐름도" id="statistical-analysis-flow">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- 제목 -->
+        <mxCell id="title" value="서울시 CCTV-범죄 분석 통계 흐름도" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="340" y="40" width="490" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- 1. 데이터 준비 단계 -->
+        <mxCell id="data-load" value="원본 데이터 로드&lt;br&gt;(CCTV, 범죄, 인구)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="120" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeWidth=2;" edge="1" parent="1" source="data-load" target="data-clean">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="data-clean" value="데이터 정제&lt;br&gt;(결측값, 이상치, 표준화)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="480" y="220" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="data-clean" target="derived-var">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="derived-var" value="파생변수 생성&lt;br&gt;(CCTV_per_1000, 범죄_per_1000)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="480" y="320" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 2. 기술통계 단계 -->
+        <mxCell id="arrow3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="derived-var" target="descriptive">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="descriptive" value="기술 통계 분석" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="420" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow4-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="descriptive" target="stats-basic">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow4-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="descriptive" target="stats-quartile">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stats-basic" value="평균, 중앙값,&lt;br&gt;표준편차" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="320" y="540" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="stats-quartile" value="사분위수 분포&lt;br&gt;(25%, 50%, 75%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="540" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 3. 상관분석 단계 -->
+        <mxCell id="arrow5-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="stats-basic" target="correlation">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow5-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="stats-quartile" target="correlation">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="660" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="correlation" value="상관 분석&lt;br&gt;(Pearson 상관계수)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="660" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="correlation" target="pvalue-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="pvalue-check" value="p-value &lt; 0.05?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="760" width="190" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow7-yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00CC00;" edge="1" parent="1" source="pvalue-check" target="significant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-yes" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#00CC00;" vertex="1" parent="1">
+          <mxGeometry x="390" y="780" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow7-no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#CC0000;" edge="1" parent="1" source="pvalue-check" target="not-significant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-no" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="720" y="780" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="significant" value="통계적으로 유의함&lt;br&gt;(상관관계 존재)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="880" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="not-significant" value="유의하지 않음&lt;br&gt;(상관관계 없음)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="740" y="880" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 4. 회귀분석 단계 -->
+        <mxCell id="arrow8-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="significant" target="regression">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="480" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow8-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="not-significant" target="regression">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="680" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="regression" value="다중 선형 회귀 분석&lt;br&gt;Y = β₀ + β₁X₁ + β₂X₂ + ε" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="460" y="1000" width="250" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="regression" target="assumptions">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="assumptions" value="회귀 가정 검토" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="1100" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow10-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="assumptions" target="vif">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow10-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="assumptions" target="normality">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow10-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="assumptions" target="homoscedasticity">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="vif" value="1. VIF 검사&lt;br&gt;다중공선성&lt;br&gt;(VIF &lt; 10)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1220" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="normality" value="2. 잔차 정규성&lt;br&gt;Q-Q Plot&lt;br&gt;(직선 형태)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="515" y="1220" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="homoscedasticity" value="3. 등분산성&lt;br&gt;잔차 산점도&lt;br&gt;(일정한 폭)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="1220" width="140" height="70" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow11-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="vif" target="assumption-check">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="1340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="arrow11-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="normality" target="assumption-check">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow11-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="homoscedasticity" target="assumption-check">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="685" y="1340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="assumption-check" value="가정 만족?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="490" y="1340" width="190" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow12-yes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#00CC00;" edge="1" parent="1" source="assumption-check" target="interpret">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-yes2" value="Yes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#00CC00;" vertex="1" parent="1">
+          <mxGeometry x="590" y="1440" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow12-no" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#CC0000;" edge="1" parent="1" source="assumption-check" target="model-fix">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label-no2" value="No" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;fontColor=#CC0000;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1360" width="60" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="interpret" value="회귀 결과 해석&lt;br&gt;(R², 회귀계수, p-value)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="515" y="1470" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="model-fix" value="모델 수정&lt;br&gt;(로그변환,&lt;br&gt;변수 제거 등)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="240" y="1350" width="140" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow-loop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;dashed=1;strokeColor=#999999;" edge="1" parent="1" source="model-fix" target="regression">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="1380" />
+              <mxPoint x="200" y="1030" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 5. 4사분면 분류 -->
+        <mxCell id="arrow13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="interpret" target="quadrant">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="quadrant" value="4사분면 분류&lt;br&gt;(중앙값 기준)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="1580" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="quadrant" target="policy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="policy" value="정책 인사이트 도출&lt;br&gt;(우선순위 지역 선정)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="480" y="1680" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 6. 시각화 -->
+        <mxCell id="arrow15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="policy" target="dashboard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dashboard" value="대시보드 시각화&lt;br&gt;(Streamlit + Plotly)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="1780" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="arrow16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" edge="1" parent="1" source="dashboard" target="final-report">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="final-report" value="최종 보고서 작성" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="480" y="1880" width="210" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- 범례 -->
+        <mxCell id="legend-box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;strokeWidth=2;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="180" height="280" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend-title" value="범례" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="80" y="130" width="100" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="50" y="170" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend1-text" value="데이터 준비" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="167" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="50" y="205" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend2-text" value="통계 분석" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="202" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="50" y="240" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend3-text" value="회귀 가정 검토" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="237" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="50" y="275" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend4-text" value="분류 및 정책" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="272" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="310" width="30" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="legend5-text" value="시각화/보고" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="307" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="legend6" value="" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="50" y="345" width="30" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="legend6-text" value="의사결정" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="90" y="345" width="120" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,5 +1,11 @@
-# API 키 및 환경 변수 (절대 커밋하지 마세요!)
+# API 키 및 환경 변수
 .env
+.env.*
+!.env.example
+
+# AI 도구 설정
+.claude/
+.cursor/
 
 # Python
 __pycache__/
